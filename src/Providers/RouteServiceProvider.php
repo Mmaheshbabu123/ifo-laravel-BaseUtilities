@@ -2,11 +2,10 @@
 
 namespace Packages\IfoBaseUtilities\Providers;
 
-use App\Providers\CustomRouteServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
-class RouteServiceProvider extends CustomRouteServiceProvider
+class RouteServiceProvider extends ServiceProvider
 {
   /**
    * The module namespace to assume when generating URLs to actions.
