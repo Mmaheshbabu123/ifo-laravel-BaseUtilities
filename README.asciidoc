@@ -1,0 +1,78 @@
+bash
+composer require ifo/laravel-base-utilities
+
+After installation, the package will automatically register itself in your Laravel project.
+
+== Configuration To publish the package configuration, run:
+
+php artisan vendor:publish --provider="Packages\IfoBaseUtilities\Providers\IfoBaseUtilitiesServiceProvider" --tag=config
+
+This will create a config/ifobaseutilities.php file where you can customize package settings.
+
+== Available Facades The following facades are available for use in your application:
+
+    Packages\IfoBaseUtilities\AbstractApiService
+    Packages\IfoBaseUtilities\AbstractModel
+    Packages\IfoBaseUtilities\BaseValidator
+    Packages\IfoBaseUtilities\DecryptRequest
+    Packages\IfoBaseUtilities\EncryptResponse
+    Packages\IfoBaseUtilities\HasNotDeletedScope
+    Packages\IfoBaseUtilities\ResponseService
+
+== Usage Here’s how to use each facade in your project:
+
+=== AbstractApiService Use AbstractApiService to define reusable API service logic.
+
+use Packages\IfoBaseUtilities\AbstractApiService;
+
+$service = new AbstractApiService();
+$response = $service->callEndpoint($url, $data);
+
+=== AbstractModel Use AbstractModel as a base class for your Eloquent models.
+
+use Packages\IfoBaseUtilities\AbstractModel;
+
+class User extends AbstractModel {
+    // Custom logic for the User model
+}
+
+=== BaseValidator BaseValidator simplifies validation logic for incoming requests.
+
+use Packages\IfoBaseUtilities\BaseValidator;
+
+$rules = [
+    'email' => 'required|email',
+    'password' => 'required|min:6',
+];
+$validator = BaseValidator::validate($data, $rules);
+
+=== DecryptRequest Use DecryptRequest to decrypt incoming encrypted request payloads.
+
+use Packages\IfoBaseUtilities\DecryptRequest;
+
+$decryptedData = DecryptRequest::handle($request->input('data'));
+
+=== EncryptResponse EncryptResponse is used to encrypt outgoing responses.
+
+use Packages\IfoBaseUtilities\EncryptResponse;
+
+$encryptedResponse = EncryptResponse::handle($data);
+return response()->json($encryptedResponse);
+
+=== HasNotDeletedScope Use HasNotDeletedScope to include a query scope for models that are not soft deleted.
+
+use Packages\IfoBaseUtilities\HasNotDeletedScope;
+
+$query = User::withoutTrashed()->get();
+
+=== ResponseService Use ResponseService to send standardized API responses.
+
+use Packages\IfoBaseUtilities\ResponseService;
+
+return ResponseService::send('Data retrieved successfully', 200, $data);
+
+== Advanced Configuration If you need to customize the facades or add additional functionality, you can extend the provided classes in your project.
+
+== Support For issues, feel free to open an issue on the GitHub repository or contact support.
+
+== License This package is open-source and available under the MIT license.
