@@ -1,0 +1,24 @@
+{
+    "name": "Infanion/ifobaseutilities",
+    "description": "",
+    "authors": [
+        {
+            "name": "Infanion ",
+            "email": "infanion@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Packages\\IfoBaseUtilities\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": ["Packages\\IfoBaseUtilities\\Providers\\IfoBaseUtilitiesServiceProvider"],
+            "aliases": {
+
+            }
+        }
+    }
+
+}

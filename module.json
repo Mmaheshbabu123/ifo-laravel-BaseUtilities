@@ -1,0 +1,14 @@
+{
+    "name": "IfoBaseUtilities",
+    "alias": "ifobaseutilities",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Packages\\IfoBaseUtilities\\Providers\\IfoBaseUtilitiesServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": [],
+    "namespace":"Packages\\IfoBaseUtilities\\"
+}
