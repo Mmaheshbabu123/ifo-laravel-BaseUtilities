@@ -5,7 +5,7 @@ After installation, the package will automatically register itself in your Larav
 
 == Configuration To publish the package configuration, run:
 
-php artisan vendor:publish --provider="Packages\IfoBaseUtilities\Providers\IfoBaseUtilitiesServiceProvider" --tag=config
+php artisan vendor:publish --tag=config
 
 This will create a config/ifobaseutilities.php file where you can customize package settings.
 
@@ -38,7 +38,7 @@ class User extends AbstractModel {
 
 === BaseValidator BaseValidator simplifies validation logic for incoming requests.
 
-use Packages\IfoBaseUtilities\BaseValidator;
+use IfoBaseUtilities\BaseValidator;
 
 $rules = [
     'email' => 'required|email',
@@ -48,26 +48,26 @@ $validator = BaseValidator::validate($data, $rules);
 
 === DecryptRequest Use DecryptRequest to decrypt incoming encrypted request payloads.
 
-use Packages\IfoBaseUtilities\DecryptRequest;
+use IfoBaseUtilities\DecryptRequest;
 
 $decryptedData = DecryptRequest::handle($request->input('data'));
 
 === EncryptResponse EncryptResponse is used to encrypt outgoing responses.
 
-use Packages\IfoBaseUtilities\EncryptResponse;
+use IfoBaseUtilities\EncryptResponse;
 
 $encryptedResponse = EncryptResponse::handle($data);
 return response()->json($encryptedResponse);
 
 === HasNotDeletedScope Use HasNotDeletedScope to include a query scope for models that are not soft deleted.
 
-use Packages\IfoBaseUtilities\HasNotDeletedScope;
+use IfoBaseUtilities\HasNotDeletedScope;
 
 $query = User::withoutTrashed()->get();
 
 === ResponseService Use ResponseService to send standardized API responses.
 
-use Packages\IfoBaseUtilities\ResponseService;
+use IfoBaseUtilities\ResponseService;
 
 return ResponseService::send('Data retrieved successfully', 200, $data);
 
